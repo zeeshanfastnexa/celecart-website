@@ -9,6 +9,7 @@ import { GoDotFill } from "react-icons/go";
 import { FaStar } from "react-icons/fa";
 import { MdOutlineShield } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
+import StatusBadge from "../StatusBadge";
 
 export default function HeroSection() {
   const contentData = [
@@ -47,7 +48,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <div className="w-full p-5">
+    <div className="w-full px-10 py-20">
       <div className="container mx-auto">
         <div className="flex flex-col items-center justify-center gap-6">
           <AnimatePresence mode="wait">
@@ -59,12 +60,10 @@ export default function HeroSection() {
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="flex flex-col items-center justify-center gap-5"
             >
-              <div className="flex flex-row items-center gap-2 bg-[#3C2E1A] rounded-full border border-[#F9A21F] text-[#F9A21F] text-xs px-5 py-1">
-                {contentData[currentIndex].icon}
-                <p className="uppercase font-medium tracking-wider">
-                  {contentData[currentIndex].heading}
-                </p>
-              </div>
+              <StatusBadge
+                icon={contentData[currentIndex].icon}
+                text={contentData[currentIndex].heading}
+              />
 
               <h1 className="text-5xl font-bold relative inline-block">
                 Discover{" "}
@@ -83,15 +82,12 @@ export default function HeroSection() {
               <p className="text-white/80">{contentData[currentIndex].paragraph}</p>
             </motion.div>
           </AnimatePresence>
-
-          {/* Rest of UI remains the same */}
+          
           <div className="flex flex-col items-center justify-center p-10 gap-3 border border-[#7B5A28] rounded-xl">
-            <div className="flex flex-row items-center gap-2 bg-[#3C2E1A] rounded-full border border-[#F9A21F] text-[#F9A21F] text-xs px-5 py-1">
-              <BsGraphUpArrow />
-              <p className="uppercase font-medium tracking-widest text-[0.6rem]">
-                Premium Fashion Insights
-              </p>
-            </div>
+            <StatusBadge
+              icon={<BsGraphUpArrow />}
+              text="Premium Fashion Insights"
+            />
             <h1 className="text-3xl font-bold">
               Discover{" "}
               <span className="text-[#F9A21F] underline underline-offset-5 decoration-2 decoration-[#7B5A28]">
